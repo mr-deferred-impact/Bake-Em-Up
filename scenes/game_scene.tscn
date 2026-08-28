@@ -1,6 +1,19 @@
 [gd_scene format=3 uid="uid://1g2hsmdhgfgg"]
 
 [ext_resource type="MeshLibrary" uid="uid://i8fj5lvr2il0" path="res://resources/mesh_library.res" id="1_w5aja"]
+[ext_resource type="Texture2D" uid="uid://d36r4rtkii1ds" path="res://assets/skyboxes/skybox-morning.png" id="2_onqr8"]
+[ext_resource type="VoxelGIData" uid="uid://ci7wlvxsebgmk" path="res://resources/light_voxel_gi.res" id="3_ycayy"]
+[ext_resource type="PackedScene" uid="uid://b42kg4etihqmc" path="res://scenes/player.tscn" id="4_bw6k5"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_v1epl"]
+panorama = ExtResource("2_onqr8")
+
+[sub_resource type="Sky" id="Sky_30mbi"]
+sky_material = SubResource("PanoramaSkyMaterial_v1epl")
+
+[sub_resource type="Environment" id="Environment_5vfh2"]
+background_mode = 2
+sky = SubResource("Sky_30mbi")
 
 [node name="GameScene" type="Node3D" unique_id=1799307217]
 
@@ -15,7 +28,26 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 [node name="Map" type="GridMap" parent="." unique_id=1838265641]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh_library = ExtResource("1_w5aja")
+cell_size = Vector3(1, 2, 1)
 data = {
-"cells": PackedInt32Array(65531, 65528, 4, 65530, 65528, 4, 65529, 65528, 4, 65528, 65528, 4, 65532, 65528, 4, 65533, 65528, 4, 65534, 65528, 4, 65535, 65528, 4, 0, 65528, 4, 1, 65528, 4, 2, 65528, 4, 3, 65528, 4, 4, 65528, 4, 5, 65528, 4, 6, 65528, 4, 7, 65528, 4, 6, 6, 655364, 5, 6, 655364, 4, 6, 655364, 65528, 6, 655364, 65529, 6, 655364, 65530, 6, 655364, 65531, 6, 655364, 65532, 6, 655364, 65533, 6, 655364, 65534, 6, 655364, 65535, 6, 655364, 0, 6, 655364, 1, 6, 655364, 2, 6, 655364, 3, 6, 655364, 7, 6, 655364)
+"cells": PackedInt32Array(65521, 65520, 4, 65523, 65520, 4, 65525, 65520, 4, 65527, 65520, 4, 65529, 65520, 4, 65531, 65520, 4, 65533, 65520, 4, 65535, 65520, 4, 1, 65520, 4, 3, 65520, 4, 5, 65520, 4, 7, 65520, 4, 9, 65520, 4, 11, 65520, 4, 13, 65520, 4, 15, 65521, 1441796, 15, 65523, 1441796, 15, 65525, 1441796, 15, 65527, 1441796, 15, 65529, 1441796, 15, 65531, 1441796, 15, 65533, 1441796, 15, 65535, 1441796, 15, 1, 1441796, 15, 3, 1441796, 15, 5, 1441796, 15, 7, 1441796, 15, 9, 1441796, 15, 11, 1441796, 15, 13, 1441796, 14, 12, 655364, 12, 12, 655364, 10, 12, 655364, 8, 12, 655364, 6, 12, 655364, 4, 12, 655364, 2, 12, 655364, 0, 12, 655364, 65534, 12, 655364, 65532, 12, 655364, 65530, 12, 655364, 65528, 12, 655364, 65526, 12, 655364, 65524, 12, 655364, 65522, 12, 655364, 65520, 12, 655364, 65520, 11, 1048580, 65520, 9, 1048580, 65520, 7, 1048580, 65520, 5, 1048580, 65520, 3, 1048580, 65520, 1, 1048580, 65520, 65535, 1048580, 65520, 65533, 1048580, 65520, 65531, 1048580, 65520, 65529, 1048580, 65520, 65527, 1048580, 65520, 65525, 1048580, 65520, 65523, 1048580, 65520, 65521, 1048580, 15, 65520, 4)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2080722864]
+transform = Transform3D(0.8660254, 0.4829629, -0.12940954, 0, 0.25881907, 0.9659258, 0.5, -0.83651626, 0.22414389, 0, 0, 0)
+light_color = Color(0.99215686, 0.91764706, 0.827451, 1)
+light_energy = 0.8
+shadow_enabled = true
+shadow_blur = 0.75
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=245981756]
+environment = SubResource("Environment_5vfh2")
+
+[node name="VoxelGI" type="VoxelGI" parent="." unique_id=354616636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -0.5)
+subdiv = 0
+size = Vector3(34, 11, 31)
+data = ExtResource("3_ycayy")
+
+[node name="Player" parent="." unique_id=1521088402 instance=ExtResource("4_bw6k5")]
