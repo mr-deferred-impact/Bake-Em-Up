@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c4wjte3r6axbl"]
+
+[ext_resource type="Texture2D" uid="uid://st2wppsladu8" path="res://assets/models/baked_goods/tiny_treats_texture_1.png" id="1_jow58"]
+[ext_resource type="Shader" uid="uid://bdp2pyffmnche" path="res://resources/mesh_outline.gdshader" id="2_lnqak"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_36dbw"]
+albedo_texture = ExtResource("1_jow58")
+
+[resource]
+render_priority = 0
+next_pass = SubResource("StandardMaterial3D_36dbw")
+shader = ExtResource("2_lnqak")
+shader_parameter/color = Color(0.05859375, 0.05859375, 0.05859375, 1)
+shader_parameter/size = 1.0499999988824
