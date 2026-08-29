@@ -47,6 +47,7 @@ shadow_mesh = SubResource("ArrayMesh_r2ock")
 [node name="FlourSack" type="Node3D" unique_id=1921001468]
 script = ExtResource("1_wx0al")
 pickable_size = 1.0
+pickable_name = "bag of flour"
 
 [node name="flour_sack_closed" type="MeshInstance3D" parent="." unique_id=498844062]
 mesh = SubResource("ArrayMesh_1l501")

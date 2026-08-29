@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bjsldgbuvci52"]
 
-[ext_resource type="Script" uid="uid://dvk5lf30q5j5j" path="res://code/pickable.gd" id="1_kalgw"]
+[ext_resource type="Script" uid="uid://djjcjekd35sdn" path="res://code/cookable.gd" id="1_k6ay7"]
 [ext_resource type="Texture2D" uid="uid://st2wppsladu8" path="res://assets/models/baked_goods/tiny_treats_texture_1.png" id="2_8ecfc"]
 [ext_resource type="Material" uid="uid://b6j3g6s43iwqw" path="res://resources/food_material.tres" id="3_k6ay7"]
 
@@ -44,8 +44,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_n72oi")
 
-[node name="BirthdayCake" type="Node3D" unique_id=22263264]
-script = ExtResource("1_kalgw")
+[node name="BirthdayCake" type="Node3D" unique_id=22263264 node_paths=PackedStringArray("food_mesh")]
+script = ExtResource("1_k6ay7")
+food_mesh = NodePath("cake_birthday")
+cook_size = 0.5
 metadata/_custom_type_script = "uid://dvk5lf30q5j5j"
 
 [node name="cake_birthday" type="MeshInstance3D" parent="." unique_id=575708694]

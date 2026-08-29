@@ -3,6 +3,7 @@
 extends StaticBody3D
 
 enum InteractableType {
+	CUSTOMER,
 	CLEAR_COUNTER,
 	CUTTING_COUNTER,
 	FOOD_PROVIDER,

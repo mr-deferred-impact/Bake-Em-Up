@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dfpjuwgfv53j5"]
+
+[ext_resource type="Texture2D" uid="uid://st2wppsladu8" path="res://assets/models/baked_goods/tiny_treats_texture_1.png" id="1_s80ax"]
+
+[resource]
+albedo_texture = ExtResource("1_s80ax")
+metallic = 1.0
+use_z_clip_scale = true
+z_clip_scale = 0.45

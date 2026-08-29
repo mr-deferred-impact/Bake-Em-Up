@@ -71,3 +71,7 @@ text = "[E - ]"
 label_settings = SubResource("LabelSettings_dqkch")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=1941750035]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0, 1.8000001, 0)
+current = true
