@@ -1,4 +1,5 @@
-class_name Player extends CharacterBody3D
+class_name Player
+extends CharacterBody3D
 
 const _RETICLE_NORMAL: Texture2D = preload("res://assets/ui/kenney_cursors/tile_0200.png")
 const _RETICLE_INTERACTABLE: Texture2D = preload("res://assets/ui/kenney_cursors/tile_0154.png")
@@ -23,8 +24,8 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	var mouse_capture: bool = (
-		event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT
-		and event.is_pressed() and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE
+			event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT
+			and event.is_pressed() and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE
 	)
 
 	var mouse_release: bool = event.is_action_pressed("ui_cancel") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED

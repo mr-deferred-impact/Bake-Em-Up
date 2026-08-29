@@ -1,1 +1,2 @@
-class_name Cookable extends Node3D
+class_name Cookable
+extends Node3D

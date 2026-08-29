@@ -1,5 +1,6 @@
 @icon("res://addons/at-icons/node3d/hand.svg")
-@abstract class_name Interactable extends StaticBody3D
+@abstract class_name Interactable
+extends StaticBody3D
 
 enum InteractableType {
 	CLEAR_COUNTER,
