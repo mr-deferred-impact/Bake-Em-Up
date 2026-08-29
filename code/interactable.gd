@@ -4,13 +4,13 @@
 enum InteractableType {
 	CLEAR_COUNTER,
 	CUTTING_COUNTER,
-	INGREDIENT_PROVIDER,
+	FOOD_PROVIDER,
 	OVEN,
 	STOVE,
 	TRASH_CAN,
 }
 
-@export var outline_mesh: MeshInstance3D
+@export var interactable_name: String
 
 var interactable_type: InteractableType
 

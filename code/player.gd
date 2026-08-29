@@ -1,12 +1,20 @@
 class_name Player extends CharacterBody3D
 
+const _RETICLE_NORMAL: Texture2D = preload("res://assets/ui/kenney_cursors/tile_0200.png")
+const _RETICLE_INTERACTABLE: Texture2D = preload("res://assets/ui/kenney_cursors/tile_0154.png")
+
 @export var _speed := 5.5
 @export var _acceleration := 15.0
 @export var _deceleration := 13.75
 @export var _mouse_sensitivity := 0.2
 
+var _interactable: Interactable
+
 @onready var _camera: Camera3D = %Camera3D
 @onready var _interaction_ray: RayCast3D = %InteractionRay
+@onready var _interactable_name: Label = %InteractableName
+@onready var _reticle: TextureRect = %Reticle
+@onready var _hand: Marker3D = %Hand
 
 
 func _ready() -> void:
@@ -31,7 +39,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_camera.rotation_degrees.x -= _mouse_sensitivity * event.screen_relative.y
 		_camera.rotation_degrees.y -= _mouse_sensitivity * event.screen_relative.x
 
-	_camera.rotation_degrees.x = clampf(_camera.rotation_degrees.x, -35.0, 65.0)
+	_camera.rotation_degrees.x = clampf(_camera.rotation_degrees.x, -60.0, 65.0)
 
 
 func _physics_process(delta: float) -> void:
@@ -46,3 +54,34 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(Vector3.ZERO, _deceleration * delta)
 
 	move_and_slide()
+
+	if _interaction_ray.is_colliding() and _interaction_ray.get_collider() is Interactable:
+		_interactable = _interaction_ray.get_collider()
+		_reticle.texture = _RETICLE_INTERACTABLE
+		_interactable_name.text = "[E - %s]" % _interactable.interactable_name
+
+	elif _interactable:
+		_interactable = null
+		_reticle.texture = _RETICLE_NORMAL
+		_interactable_name.text = "[E - ]"
+
+	if _interactable != null and Input.is_action_just_pressed("interact"):
+		_interactable.interact()
+
+
+func get_item() -> Pickable:
+	if _hand.get_child_count(0) > 0:
+		return _hand.get_child(0)
+
+	return null
+
+
+func take_item(item: Pickable) -> void:
+	item.reparent(_hand)
+	item.position = Vector3.ZERO
+	item.rotation = Vector3.ZERO
+	item.scale = Vector3(item.pickable_size, item.pickable_size, item.pickable_size)
+
+
+func give_item(target: Marker3D) -> void:
+	get_item().reparent(target)
