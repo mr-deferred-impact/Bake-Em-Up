@@ -90,6 +90,7 @@ shadow_mesh = SubResource("ArrayMesh_f26f1")
 [node name="MilkProvider" type="StaticBody3D" unique_id=1960913365]
 script = ExtResource("1_qslhv")
 _food_scene = ExtResource("2_hxarg")
+interactable_name = "Picjkup Milk"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1079679094]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

@@ -1,22 +1,7 @@
 [gd_scene format=4 uid="uid://byguuqkwod351"]
 
 [ext_resource type="Script" uid="uid://430oq2s0q0xu" path="res://code/customer.gd" id="1_ktfjk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vfh2"]
-content_margin_left = 20.0
-content_margin_top = 10.0
-content_margin_right = 20.0
-content_margin_bottom = 10.0
-bg_color = Color(0.94140625, 0.94140625, 0.94140625, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.12109375, 0.12109375, 0.12109375, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[ext_resource type="Theme" uid="uid://0shpb41uiyjd" path="res://resources/main_ui_theme.tres" id="2_xss0h"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5vfh2"]
 radius = 1.0
@@ -44,27 +29,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("2_xss0h")
 
 [node name="DialogueBox" type="RichTextLabel" parent="HUD" unique_id=1205023387]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0069444445
+anchor_left = 0.013888889
 anchor_top = 0.79012346
-anchor_right = 0.9930556
-anchor_bottom = 0.9876543
+anchor_right = 0.9861111
+anchor_bottom = 0.97530866
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/default_color = Color(0.08984375, 0.08984375, 0.08984375, 1)
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_5vfh2")
 bbcode_enabled = true
 text = "Hello! Can I have a [b]Birthday Cake[/b] please???"
 fit_content = true
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1008584411]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_5vfh2")
 
@@ -72,4 +55,5 @@ shape = SubResource("CylinderShape3D_5vfh2")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 stream = SubResource("AudioStreamOggVorbis_ktfjk")
-volume_db = -10.0
+volume_db = -9.0
+bus = &"SFX"

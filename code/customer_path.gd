@@ -25,7 +25,20 @@ func _ready() -> void:
 
 	customer.item_received.connect(
 		func() -> void:
-			path_follow.rotation_degrees.y = 180.0
+			Global.player.get_item().queue_free()
+
+			var tween := create_tween()
+			var duration := 4.0
+
+			customer.animation_player.play("walk")
+
+			tween.tween_property(customer, "rotation_degrees:y", 180.0, 0.5)
+			tween.tween_property(path_follow, "progress_ratio", 0.0, duration)
+
+			tween.finished.connect(
+				func() -> void:
+					customer.animation_player.play("idle")
+			)
 	)
 
 
@@ -42,7 +55,7 @@ func _spawn_customer() -> void:
 
 	character.scale = Vector3.ONE * 3.0
 	path_follow.rotation = Vector3.ZERO
-	character.rotation_degrees.y = -90.0
+	character.rotation_degrees.y = -90.06
 
 	var tween := create_tween()
 	var duration := 3.5
@@ -50,3 +63,7 @@ func _spawn_customer() -> void:
 	tween.tween_property(path_follow, "progress_ratio", 1.0, duration)
 
 	tween.finished.connect(customer.arrived.emit)
+
+
+func _on_music_slider_drag_ended(value_changed: bool) -> void:
+	pass # Replace with function body.

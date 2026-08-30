@@ -48,6 +48,7 @@ shadow_mesh = SubResource("ArrayMesh_n72oi")
 script = ExtResource("1_k6ay7")
 food_mesh = NodePath("cake_birthday")
 cook_size = 0.5
+pickable_name = "birthday cake"
 metadata/_custom_type_script = "uid://dvk5lf30q5j5j"
 
 [node name="cake_birthday" type="MeshInstance3D" parent="." unique_id=575708694]

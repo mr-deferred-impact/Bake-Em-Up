@@ -15,6 +15,7 @@ var _item := _AVAILABLE_FOOD_ITEMS.pick_random() as String
 @onready var _dialogue_box: RichTextLabel = %DialogueBox
 @onready var _hud: Control = %HUD
 @onready var _text_sound: AudioStreamPlayer3D = %TextSound
+@onready var _collision_shape_3d: CollisionShape3D = %CollisionShape3D
 
 
 func _ready() -> void:
@@ -39,7 +40,10 @@ func interact() -> void:
 		write_dialogue("This is not the item I asked for. Please get me a [b]%s[/b]" % _item)
 
 	else:
-		item_received.emit()
+		if Global.player.get_item() is Cookable and not (Global.player.get_item() as Cookable).is_cooked:
+			write_dialogue("You gotta bake the [b]%s[b] up, first!! What're you doing??" % _item)
+		else:
+			item_received.emit()
 
 
 func write_dialogue(text: String) -> void:
@@ -53,9 +57,12 @@ func write_dialogue(text: String) -> void:
 	var duration: float = _dialogue_box.get_parsed_text().length() / 30.0
 
 	tween.tween_property(_dialogue_box, "visible_ratio", 1.0, duration)
+	_collision_shape_3d.set_deferred("disabled", true)
 
 	tween.finished.connect(
 		func() -> void:
 			_text_sound.stop()
 			get_tree().create_timer(2.5).timeout.connect(_hud.hide)
+			get_tree().create_timer(2.5).timeout.connect(_hud.hide)
+			_collision_shape_3d.set_deferred("disabled", false)
 	)

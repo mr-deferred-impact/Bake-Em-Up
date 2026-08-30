@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dvk5lf30q5j5j" path="res://code/pickable.gd" id="1_2i7cc"]
 [ext_resource type="Texture2D" uid="uid://djcusjmeioj7b" path="res://assets/models/bakery_interior/tiny_treats_texture_1.png" id="2_q3rn6"]
+[ext_resource type="Material" uid="uid://b6j3g6s43iwqw" path="res://resources/food_material.tres" id="3_q3rn6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cc2ho"]
 resource_name = "tiny_treats_1"
@@ -51,3 +52,4 @@ metadata/_custom_type_script = "uid://dvk5lf30q5j5j"
 
 [node name="milk" type="MeshInstance3D" parent="." unique_id=1759687111]
 mesh = SubResource("ArrayMesh_jh84y")
+surface_material_override/0 = ExtResource("3_q3rn6")
